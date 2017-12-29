@@ -9,3 +9,7 @@
 --
 
 [numpy reference](https://docs.scipy.org/doc/numpy/reference/)
+
+string
+
+![](https://github.com/PatricWang/show-me-the-code/blob/master/2_gen_ticket/string.JPG)
