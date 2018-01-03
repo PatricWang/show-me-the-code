@@ -63,3 +63,6 @@ This function returns a list of tuples, where the i-th tuple contains the i-th e
 [code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/1b467e80-0ed2-445c-af4f-038f671c2d6c)
 
 
+你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。
+--
+
