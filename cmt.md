@@ -37,8 +37,8 @@ sklearn
 `read()`:读所有内容，放到字符串中<br>
 `readline()`:读一行,<br>
 `readlines()`:读所有内容，生成一个行的列表(list)，可以用for...in处理
-`numpy.sum`:返回类型为`numpy.ndarray`
-`sorted`:<br>
+`numpy.sum()`:返回类型为`numpy.ndarray`<br>
+`sorted()`:<br>
 **sort 与 sorted 区别:<br>**
 sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。<br>
 list 的 sort 方法返回的是对已经存在的列表进行操作，而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。<br>
@@ -46,7 +46,9 @@ sorted(iterable, cmp=None, key=None, reverse=False)<br>
 1.cmp，比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0<br>
 2.key，主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序<br>
 3.reverse，是否反转，默认情况下不反转<br>
-`zip`:
+`zip()`:<br>
+This function returns a list of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables. The returned list is truncated in length to the length of the shortest argument sequence. When there are multiple arguments which are all of the same length, zip() is similar to map() with an initial argument of None. With a single sequence argument, it returns a list of 1-tuples. With no arguments, it returns an empty list.<br>
+`lambda表达式`<br>
 
 ### other:<br>
 字符串前加r，防止字符转义
@@ -57,5 +59,7 @@ sorted(iterable, cmp=None, key=None, reverse=False)<br>
 
 [numpy.sum(axis=0)解释](https://segmentfault.com/q/1010000010111006/a-1020000010131823):<br>
 简单说对于二维数组，axis=0 按列相加，axis=1 按行相加，详细解释看上面链接
+
+[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/1b467e80-0ed2-445c-af4f-038f671c2d6c)
 
 
