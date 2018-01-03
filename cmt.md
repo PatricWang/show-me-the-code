@@ -31,7 +31,7 @@ windows下安装MySql从官网直接下
 sklearn
 [sklearn reference](http://scikit-learn.org/stable/index.html)  [中文](http://sklearn.apachecn.org/cn/stable/index.html)
 
-###key word&fct:<br>
+### key word&fct:<br>
 `open`:打开文件<br>
 `with-as`:适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等
 `read()`:读所有内容，放到字符串中<br>
@@ -48,11 +48,13 @@ sorted(iterable, cmp=None, key=None, reverse=False)<br>
 3.reverse，是否反转，默认情况下不反转<br>
 `zip`:
 
-###other:<br>
+### other:<br>
 字符串前加r，防止字符转义
 字符串前加u，unicode字符串
 
 [稀疏矩阵csr_matrix](https://app.yinxiang.com/shard/s72/nl/17217582/4de137bc-df5d-45ce-a735-0c53b89aec0a)
+
+
 [numpy.sum(axis=0)解释](https://segmentfault.com/q/1010000010111006/a-1020000010131823):<br>
 简单说对于二维数组，axis=0 按列相加，axis=1 按行相加，详细解释看上面链接
 
