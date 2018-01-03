@@ -22,3 +22,26 @@ string
 [windows下安装redis](https://www.cnblogs.com/M-LittleBird/p/5902850.html)
 
 windows下安装MySql从官网直接下
+
+任一个英文的纯文本文件，统计其中的单词出现的个数
+--
+
+import:<br>
+sklearn
+[sklearn reference](http://scikit-learn.org/stable/index.html)[中文](http://sklearn.apachecn.org/cn/stable/index.html)
+
+key word:<br>
+'open':打开文件<br>
+'with-as':适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等
+'read()':读所有内容，放到字符串中<br>
+'readline()':读一行,<br>
+'readlines()':读所有内容，生成一个行的列表(list)，可以用for...in处理
+
+other:<br>
+字符串前加r，防止字符转义
+字符串前加u，unicode字符串
+
+[稀疏矩阵csr_matrix](https://app.yinxiang.com/shard/s72/nl/17217582/4de137bc-df5d-45ce-a735-0c53b89aec0a)
+
+
+
