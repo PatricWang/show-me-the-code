@@ -26,8 +26,8 @@ windows下安装MySql从官网直接下
 任一个英文的纯文本文件，统计其中的单词出现的个数
 --
 
-###import:<br>
---
+### import:<br>
+
 sklearn
 [sklearn reference](http://scikit-learn.org/stable/index.html)  [中文](http://sklearn.apachecn.org/cn/stable/index.html)
 
