@@ -33,10 +33,10 @@ sklearn
 
 ### key word&fct:<br>
 `open`:打开文件<br>
-`with-as`:适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等
+`with-as`:适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等<br>
 `read()`:读所有内容，放到字符串中<br>
 `readline()`:读一行,<br>
-`readlines()`:读所有内容，生成一个行的列表(list)，可以用for...in处理
+`readlines()`:读所有内容，生成一个行的列表(list)，可以用for...in处理<br>
 `numpy.sum()`:返回类型为`numpy.ndarray`<br>
 `sorted()`:<br>
 **sort 与 sorted 区别:<br>**
@@ -45,10 +45,23 @@ list 的 sort 方法返回的是对已经存在的列表进行操作，而内建
 sorted(iterable, cmp=None, key=None, reverse=False)<br>
 1.cmp，比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0<br>
 2.key，主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序<br>
-3.reverse，是否反转，默认情况下不反转<br>
+3.reverse，是否反转，默认情况下不反转(从小到大排列)<br>
 `zip()`:<br>
 This function returns a list of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables. The returned list is truncated in length to the length of the shortest argument sequence. When there are multiple arguments which are all of the same length, zip() is similar to map() with an initial argument of None. With a single sequence argument, it returns a list of 1-tuples. With no arguments, it returns an empty list.<br>
-`lambda表达式`<br>
+`lambda表达式`:labmda x : f(x)，举例：<br>
+```python
+foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
+print filter(lambda x: x % 3 == 0, foo)
+```
+[18, 9, 24, 12, 27]<br>
+```python
+print map(lambda x: x * 2 + 10, foo)
+```
+[14, 46, 28, 54, 44, 58, 26, 34, 64]<br>
+```python
+print reduce(lambda x, y: x + y, foo)
+```
+139<br>
 
 ### other:<br>
 字符串前加r，防止字符转义
