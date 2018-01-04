@@ -79,3 +79,24 @@ print reduce(lambda x, y: x + y, foo)
 你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。
 --
 
+### new import:<br>
+`os`:os 模块提供了一个统一的操作系统接口函数, 这些接口函数通常是平台指定的,os 模块能在不同操作系统平台如 nt 或 posix中的特定函数间自动切换,从而能实现跨平台操作, `os.name`字符串指示你正在使用的平台。比如对于Windows，它是'nt'，而对于Linux/Unix用户，它是'posix'。<br>
+
+### key words & fct:<br>
+`os.walk()`:生成一个目录树下的所有文件名<br>
+函数原型：<br>
+os.walk(top [, topdown = True [, onerror = None [, followlinks = False]]])<br>
+参数说明：<br> 
+top表示需要遍历的目录树的路径。 <br>
+topdown的默认值是“True”，表示首先返回目录树下的文件，然后遍历目录树下的子目录。值设为False时，则表示先遍历目录树下的子目录，返回子目录下的文件，最后返回根目录下的文件。 <br>
+onerror的默认值是“None”，表示忽略文件遍历时产生的错误。如果不为空，则提供一个自定义函数提示错误信息后继续遍历或抛出异常中止遍历。 <br>
+该函数返回一个列表，列表中的每一个元素都是一个元组，该元组有3个元素，分别表示每次遍历的路径名，目录列表和文件列表。<br>
+
+`os.path.join(path,name)`:连接目录与文件名或目录<br>
+```python
+>>> os.path.join('c:\\Python','a.txt')
+'c:\\Python\\a.txt'
+>>> os.path.join('c:\\Python','f1')
+'c:\\Python\\f1'
+```
+
