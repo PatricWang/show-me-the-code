@@ -35,6 +35,14 @@ sklearn
 
 ### keyword & fct:<br>
 `open`:打开文件<br>
+常用模式：<br>
+r：从开头只读<br>
+r+：从开头读写<br>
+w：只写，如果文件存在则将其覆盖，如果不存在则创建新文件<br>
+w+：读写，如果文件存在则将其覆盖，如果不存在则创建新文件<br>
+a：从文件结尾处开始写，如果不存在则创建新文件<br>
+a+：从文件结尾处读写，如果不存在则创建新文件<br>
+
 `with-as`:适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等<br>
 `read()`:读所有内容，放到字符串中<br>
 `readline()`:读一行,<br>
@@ -130,9 +138,21 @@ python使用unicode作为基础编码类型，字符串常用编码utf8,gbk等�
 [说明](http://blog.csdn.net/moodytong/article/details/8136258)<br>
 
 
+统计一个目录下有多少cpp文件，多少行代码，空行和注释
+--
 
+### keyword & fct:<br>
+`str.strip()`:<br>用于移除字符串头尾指定的字符（默认为空格）<br>
 
+一个HTML文件，找出里面的正文和链接
+--
 
+### others:<br>
+
+**python write 和 writelines的区别**：<br>
+
+file.write(str)的参数是一个字符串，就是你要写入文件的内容.<br>
+file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你写入文件。<br>
 
 
 
