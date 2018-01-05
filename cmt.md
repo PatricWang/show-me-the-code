@@ -1,3 +1,5 @@
+[python Offical Doc](https://docs.python.org/2/contents.html)
+
 将图片右上角加上红色的数字，类似于微信未读信息数量那种提示效果
 --
 
@@ -31,7 +33,7 @@ windows下安装MySql从官网直接下
 sklearn
 [sklearn reference](http://scikit-learn.org/stable/index.html)  [中文](http://sklearn.apachecn.org/cn/stable/index.html)
 
-### key word&fct:<br>
+### keyword & fct:<br>
 `open`:打开文件<br>
 `with-as`:适用于对资源进行访问的场合，确保不管使用过程中是否发生异常都会执行必要的“清理”操作，释放资源，比如文件使用后自动关闭、线程中锁的自动获取和释放等<br>
 `read()`:读所有内容，放到字符串中<br>
@@ -76,13 +78,13 @@ print reduce(lambda x, y: x + y, foo)
 [code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/1b467e80-0ed2-445c-af4f-038f671c2d6c)
 
 
-你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。
+你有一个目录，装了很多照片，把它们的尺寸变成指定大小。
 --
 
 ### new import:<br>
 `os`:os 模块提供了一个统一的操作系统接口函数, 这些接口函数通常是平台指定的,os 模块能在不同操作系统平台如 nt 或 posix中的特定函数间自动切换,从而能实现跨平台操作, `os.name`字符串指示你正在使用的平台。比如对于Windows，它是'nt'，而对于Linux/Unix用户，它是'posix'。<br>
 
-### key words & fct:<br>
+### keyword & fct:<br>
 `os.walk()`:生成一个目录树下的所有文件名<br>
 函数原型：<br>
 os.walk(top [, topdown = True [, onerror = None [, followlinks = False]]])<br>
@@ -99,4 +101,55 @@ onerror的默认值是“None”，表示忽略文件遍历时产生的错误。
 >>> os.path.join('c:\\Python','f1')
 'c:\\Python\\f1'
 ```
+
+从一个网站上爬取所有文章然后统计出每篇文章最重要的词。
+--
+
+### new import:<br>
+`beautiful soap`:解析HTML和XML<br>
+[documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+HTML文件其实就是由一组尖括号构成的标签组织起来的，每一对尖括号形式一个标签，标签之间存在上下关系，形成标签树；因此可以说Beautiful Soup库是解析、遍历、维护“标签树”的功能库。
+
+`urllib2`<br>
+`goose`<br>
+Python-goose项目是用Python重写的Goose，Goose原来是用Java写的文章提取工具。Python-goose的目标是给定任意资讯文章或者任意文章类的网页，不仅提取出文章的主体，同时提取出所有元信息以及图片等信息，支持中文网页。<br>
+[goose on github](https://github.com/grangier/python-goose)<br>
+
+`jieba`:<br>
+中文分词组件，[github adr](https://github.com/fxsjy/jieba)<br>
+`TfidfTransformer`:统计词语的tfidf权重，[TFIDF介绍](http://blog.csdn.net/eastmount/article/details/50323063)
+
+### keyword & fct:<br>
+`urlopen(url)`:Open the URL url, which can be either a string or a Request object,This function returns a file-like object<br>
+`urllib2.splittype(url)`<br>
+`urllib2.splithost(rest)`<br>
+`list.extend(seq)`:<br>
+用于在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）<br>
+`decode`:<br>
+python使用unicode作为基础编码类型，字符串常用编码utf8,gbk等，编码解码都要通过unicode类型，pyton3中str替代了unicode<br>
+[说明](http://blog.csdn.net/moodytong/article/details/8136258)<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
