@@ -5,7 +5,7 @@
 
 [python中import自己写的.py](http://blog.csdn.net/AlanConstantineLau/article/details/68952256)
 
-[pillow reference](https://pillow.readthedocs.io/en/4.3.x/)
+[pillow reference](http://pillow.readthedocs.io/en/5.0.0/)
 
 生成激活码(随机字母序列，cdkey）并存入数据库(mysql,redis)
 --
@@ -83,7 +83,7 @@ print reduce(lambda x, y: x + y, foo)
 [numpy.sum(axis=0)解释](https://segmentfault.com/q/1010000010111006/a-1020000010131823):<br>
 简单说对于二维数组，axis=0 按列相加，axis=1 按行相加，详细解释看上面链接
 
-[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/1b467e80-0ed2-445c-af4f-038f671c2d6c)
+* #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/1b467e80-0ed2-445c-af4f-038f671c2d6c)**
 
 
 你有一个目录，装了很多照片，把它们的尺寸变成指定大小。
@@ -138,6 +138,9 @@ python使用unicode作为基础编码类型，字符串常用编码utf8,gbk等�
 [说明](http://blog.csdn.net/moodytong/article/details/8136258)<br>
 
 
+* #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/9314eb53-b6c9-4f77-8b51-c9dd7056ed5a)**
+
+
 统计一个目录下有多少cpp文件，多少行代码，空行和注释
 --
 
@@ -153,6 +156,55 @@ python使用unicode作为基础编码类型，字符串常用编码utf8,gbk等�
 
 file.write(str)的参数是一个字符串，就是你要写入文件的内容.<br>
 file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你写入文件。<br>
+
+生成随机验证码
+--
+
+### keyword & fct:<br>
+`random.choice()`:<br>返回一个列表，元组或字符串的随机项<br>
+`ImageFont.truetype(font=None, size=10, index=0, encoding='', layout_engine=None):`<br>
+加载一个TrueType或者OpenType字体文件，并且创建一个字体对象。这个函数从指定的文件加载了一个字体对象，并且为指定大小的字体创建了字体对象<br>
+`Image.new(mode, size, color=0)`:<br>新建一个Image
+`ImageDraw.Draw(im, mode=None)`:<br>Creates an object that can be used to draw in the given image.<br>
+`enumerate(sequence, [start=0])`:<br>函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中<br>
+```python
+>>>seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+>>> list(enumerate(seasons))
+[(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+>>> list(enumerate(seasons, start=1))       # 小标从 1 开始
+[(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+```
+`randrange([start,] stop [,step])`:<br>:返回指定递增基数集合中的一个随机数，基数缺省值为1<br>
+
+
+敏感词文本文件 filtered_words.txt，里面的内容固定，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。
+--
+
+### new import:<br>
+`sys`:<br>This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.<br>这个模块可供访问由解释器使用或维护的变量和与解释器进行交互的函数。<br>
+`local`:<br>opens access to the POSIX locale database and functionality. The POSIX locale mechanism allows programmers to deal with certain cultural issues in an application, without requiring the programmer to know all the specifics of each country where the software is executed.<br>
+
+
+保存链接中的图片
+--
+
+### new import:<br>
+`requests`:<br>http库
+`lxml.html`:<br>解析html,[lxml.html](http://lxml.de/lxmlhtml.html)<br>
+
+
+### keyword & fct:<br>
+`requests.get(url)`:<br>发送http请求，返回response对象<br>
+`lxml.html.document_fromstring(str)`:<br>由给定的参数生成一个HtmlElement对象<br>
+`cssselect(str)`:<br>通过ccs选择器定位<br>
+
+* #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/d554182e-3419-42a4-9edb-74f06039c858)**
+
+
+
+
+
+
 
 
 
