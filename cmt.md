@@ -201,10 +201,22 @@ file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你�
 * #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/d554182e-3419-42a4-9edb-74f06039c858)**
 
 
+txt转为excel
+--
 
+### new import:<br>
+`pandas`:<br>
+Python Data Analysis Library<br>
+[10 Minutes to pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html)<br>
+[cookbook](http://pandas.pydata.org/pandas-docs/stable/cookbook.html#cookbook)<br>
 
-
-
+### keyword & fct:<br>
+`eval（expression，globals=None, locals=None）`:<br>
+将字符串str当成有效的表达式来求值并返回计算结果，可以将字符串转成list,tuple,dict<br>
+`dict.values()`:<br>
+返回字典中的所有值<br>
+`numpy.random.rand(d0,d1...dn)`:<br>
+Create an array of the given shape and propagate it with random samples from a uniform distribution over [0, 1).<br>
 
 
 
