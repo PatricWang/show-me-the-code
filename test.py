@@ -9,7 +9,8 @@ from goose import Goose
 from goose.text import StopWordsChinese
 import os
 import jieba
-
+import requests,sys, lxml.html
+import pandas as pd
 
 def genticket():
     idx = np.array([1,2,3,4,5])
@@ -169,5 +170,67 @@ def jiebaDemo():
     seg_list = jieba.lcut("小明硕士毕业于中国科学院计算所，后在日本京都大学深造")  # 搜索引擎模式
     print(", ".join(seg_list))
 
+def requestDemo():
+    url1 = 'http://www.baidu.com/s'
+    url2 = 'https://item.jd.com/2967929.html'
+    r = requests.get(url2)
+    doc = lxml.html.document_fromstring(r.text)
+    r.raise_for_status()
+    r.encoding = r.apparent_encoding
+    el = doc.cssselect('img')
+    imgAdr = el[0].attrib['src']
+
+    print el[0].attrib.content
+    # print  r.text[:1000]
+    #
+    # try:
+    #     kv = {'wd':'Python'}
+    #     r = requests.get(url1,params=kv)
+    #     print(r.request.url)
+    #     r.raise_for_status()
+    #     print(len(r.text))
+    #     print(r.text[500:5000])
+    # except:
+    #     print"err"
+    # with open('1.txt','w')as f:
+    #     f.write(r.text.encode('utf-8'))
+    #print r.text
+
+def evalDemo():
+    #eg.1
+    strList = '[1,2,3,4,5]'
+    strDict = "{'a':1,'b':2,'c':3}"
+    strTuple = '(1,2,3,4,5)'
+
+    print type(strList),type(eval(strList))
+    print type(strDict),type(eval(strDict))
+    print type(strTuple),type(eval(strTuple))
+#eg.2
+    print eval("1+2+3+4")
+
+#eg.3
+    a,b,c = 1,2,3
+    print eval('a+b+c')
+
+#eg.4
+    g = {'a':2}
+    print eval('a*10',g)
+
+def pandaDemo():
+    s = pd.Series([1,3,5,np.nan,6,8])
+    dates = pd.date_range('20130101',periods=6)
+    df = pd.DataFrame(np.random.randn(6,4),index=dates,columns=list('ABCD'))
+    df2 = pd.DataFrame({'A':1.,
+                        'B':pd.Timestamp('20130102'),
+                        'C':pd.Series(1,index=list(range(4)),dtype='float32'),
+                        'D':np.array([3]*4,dtype='int32'),
+                        'E':pd.Categorical(["test","train","test","train"]),
+                        'F':'foo'})
+
+    print s
+    print dates
+    print df
+    print df2
+
 if __name__ == '__main__':
-    collect_keywd()
+    pandaDemo()
