@@ -201,7 +201,7 @@ file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你�
 * #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/d554182e-3419-42a4-9edb-74f06039c858)**
 
 
-txt转为excel
+txt转为excel,excel转为xml
 --
 
 ### new import:<br>
@@ -209,6 +209,10 @@ txt转为excel
 Python Data Analysis Library<br>
 [10 Minutes to pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html)<br>
 [cookbook](http://pandas.pydata.org/pandas-docs/stable/cookbook.html#cookbook)<br>
+`xlrd`:<br>Library for developers to extract data from Microsoft Excel (tm) spreadsheet files<br>
+[doc](http://xlrd.readthedocs.io/en/latest/)
+`json`:<br>编码和解码json对象, JavaScript Object Notation, 是一种轻量级的数据交换格式，易于人阅读和编写。<br>
+
 
 ### keyword & fct:<br>
 `eval（expression，globals=None, locals=None）`:<br>
@@ -216,15 +220,34 @@ Python Data Analysis Library<br>
 `dict.values()`:<br>
 返回字典中的所有值<br>
 `numpy.random.rand(d0,d1...dn)`:<br>
-Create an array of the given shape and propagate it with random samples from a uniform distribution over [0, 1).<br>
+Create an array of the given shape and propagate it with random samples from a uniform distribution over \[0, 1).<br>
+`pandas.DataFrame.to_excel`:<br>
+DataFrame转为excel
+`xlrd.open_workbook(excel_path)`:<br>Open a spreadsheet file for data extraction<br>
+Returns:	An instance of the Book class.<br>
+`book.sheets()`:<br>Returns:	A list of all sheets in the book<br>
+`sheet.cell_value(i,j)`:<br>Value of the cell in the given row and column.<br>
+`sheet.nrows`:number of rows<br>
+`sheet.ncols`:number of cols<br>
+`json.dumps(obj)`:将 Python 对象编码成 JSON 字符串<br>
+`json.loads()`:将已编码的 JSON 字符串解码为 Python 对象<br>
+
+使用 Python 对密码加密
+--
+
+### new import:<br>
+`hashlib`:<br>提供了常见的摘要算法，如MD5，SHA1等等。<br>
+什么是摘要算法呢？摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。<br>
+摘要算法就是通过摘要函数f()对任意长度的数据data计算出固定长度的摘要digest，目的是为了发现原始数据是否被人篡改过。<br>
+摘要算法之所以能指出数据是否被篡改过，就是因为摘要函数是一个单向函数，计算f(data)很容易，但通过digest反推data却非常困难。而且，对原始数据做一个bit的修改，都会导致计算出的摘要完全不同。<br>
+`hmac`:<br>实现了hmac算法，需要一个key来进行加密, Keyed-Hashing for Message Authentication。它通过一个标准算法，在计算哈希的过程中，把key混入计算过程中。<br>
 
 
-
-
-
-
-
-
+### keyword & fct:<br>
+`os.urandom(n)`:<br>随即产生n个字节的字符串，可以作为随机加密key使用
+`hmac.digest()`:<br>
+Return the hash value of this hashing object.<br>
+This returns a string containing 8-bit data. The object is not altered in any way by this function; you can continue updating the object after calling this function<br>
 
 
 
