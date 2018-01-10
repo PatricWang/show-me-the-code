@@ -272,6 +272,54 @@ IP地址是一个32位的二进制数，通常被分割为4个“8位二进制�
 `send_header(keyword, value)`<br>
 `end_headers()`<br>
 
+#### 用socket写client&server
+
+* **server:**<br>
+1.建立一个基于tcp协议的socket对象<br>
+```python
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+```
+AF_INET指定ipv4协议，SOCK_STREAM指面向流的tcp协议<br>
+
+2.绑定地址和端口<br>
+```python
+s.bind(‘’, 8089))
+```
+引号为空指绑定任意ip，即可接收任意ip的请求，端口号<65535,小于1024时需要管理员权限<br>
+
+3.监听连接请求<br>
+```python
+s.listen(5)
+```
+指定最大连接数为5<br>
+
+4.阻塞线程，直到获得客户端连接<br>
+```python
+sock, addr = s.accept()
+```
+返回客户端的socket对象和客户端ip&端口，该方法会**阻塞线程**<br>
+
+* **client:**<br>
+1.建立socket对象，同server<br>
+
+2.连接到服务器<br>
+```python
+s.connect(('127.0.0.1', 80))
+```
+
+3.发送数据<br>
+```python
+s.send('hello')
+```
+tcp连接是双向的，双方都可以给对方发数据<br>
+
+4.接受数据<br>
+```python
+s.recv(1024)
+```
+接受对方发来的数据，该方法会**阻塞线程**，所以需要一个专门的线程来接受数据<br>
+
+
 
 
 
