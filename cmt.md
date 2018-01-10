@@ -1,13 +1,13 @@
 [python Offical Doc](https://docs.python.org/2/contents.html)
 
-将图片右上角加上红色的数字，类似于微信未读信息数量那种提示效果
+1.将图片右上角加上红色的数字，类似于微信未读信息数量那种提示效果
 --
 
 [python中import自己写的.py](http://blog.csdn.net/AlanConstantineLau/article/details/68952256)
 
 [pillow reference](http://pillow.readthedocs.io/en/5.0.0/)
 
-生成激活码(随机字母序列，cdkey）并存入数据库(mysql,redis)
+2.生成激活码(随机字母序列，cdkey）并存入数据库(mysql,redis)
 --
 
 [numpy reference](https://docs.scipy.org/doc/numpy/reference/)
@@ -25,7 +25,7 @@ string
 
 windows下安装MySql从官网直接下
 
-任一个英文的纯文本文件，统计其中的单词出现的个数
+3.任一个英文的纯文本文件，统计其中的单词出现的个数
 --
 
 ### import:<br>
@@ -86,7 +86,7 @@ print reduce(lambda x, y: x + y, foo)
 * #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/1b467e80-0ed2-445c-af4f-038f671c2d6c)**
 
 
-你有一个目录，装了很多照片，把它们的尺寸变成指定大小。
+4.你有一个目录，装了很多照片，把它们的尺寸变成指定大小。
 --
 
 ### new import:<br>
@@ -110,7 +110,7 @@ onerror的默认值是“None”，表示忽略文件遍历时产生的错误。
 'c:\\Python\\f1'
 ```
 
-从一个网站上爬取所有文章然后统计出每篇文章最重要的词。
+5.从一个网站上爬取所有文章然后统计出每篇文章最重要的词。
 --
 
 ### new import:<br>
@@ -141,13 +141,13 @@ python使用unicode作为基础编码类型，字符串常用编码utf8,gbk等�
 * #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/9314eb53-b6c9-4f77-8b51-c9dd7056ed5a)**
 
 
-统计一个目录下有多少cpp文件，多少行代码，空行和注释
+6.统计一个目录下有多少cpp文件，多少行代码，空行和注释
 --
 
 ### keyword & fct:<br>
 `str.strip()`:<br>用于移除字符串头尾指定的字符（默认为空格）<br>
 
-一个HTML文件，找出里面的正文和链接
+7.一个HTML文件，找出里面的正文和链接
 --
 
 ### others:<br>
@@ -157,7 +157,7 @@ python使用unicode作为基础编码类型，字符串常用编码utf8,gbk等�
 file.write(str)的参数是一个字符串，就是你要写入文件的内容.<br>
 file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你写入文件。<br>
 
-生成随机验证码
+8.生成随机验证码
 --
 
 ### keyword & fct:<br>
@@ -177,7 +177,7 @@ file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你�
 `randrange([start,] stop [,step])`:<br>:返回指定递增基数集合中的一个随机数，基数缺省值为1<br>
 
 
-敏感词文本文件 filtered_words.txt，里面的内容固定，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。
+9.敏感词文本文件 filtered_words.txt，里面的内容固定，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。
 --
 
 ### new import:<br>
@@ -185,7 +185,7 @@ file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你�
 `local`:<br>opens access to the POSIX locale database and functionality. The POSIX locale mechanism allows programmers to deal with certain cultural issues in an application, without requiring the programmer to know all the specifics of each country where the software is executed.<br>
 
 
-保存链接中的图片
+10.保存链接中的图片
 --
 
 ### new import:<br>
@@ -201,7 +201,7 @@ file.writelines(sequence)的参数是序列，比如列表，它会迭代帮你�
 * #### **[code explanation](https://app.yinxiang.com/shard/s72/nl/17217582/d554182e-3419-42a4-9edb-74f06039c858)**
 
 
-txt转为excel,excel转为xml
+11.txt转为excel,excel转为xml
 --
 
 ### new import:<br>
@@ -232,7 +232,7 @@ Returns:	An instance of the Book class.<br>
 `json.dumps(obj)`:将 Python 对象编码成 JSON 字符串<br>
 `json.loads()`:将已编码的 JSON 字符串解码为 Python 对象<br>
 
-使用 Python 对密码加密
+12.使用 Python 对密码加密
 --
 
 ### new import:<br>
@@ -248,6 +248,48 @@ Returns:	An instance of the Book class.<br>
 `hmac.digest()`:<br>
 Return the hash value of this hashing object.<br>
 This returns a string containing 8-bit data. The object is not altered in any way by this function; you can continue updating the object after calling this function<br>
+
+13.A Simple Web Server
+--
+
+一般我们的web程序都运行在 TCP/IP 协议上，程序之间使用 socket(套接字) 进行通信，它能够让计算机之间的通信就像写文件和读文件一样简单。<br>
+一个 tcp socket 由一个IP地址和端口号组成。<br>
+IP地址是一个32位的二进制数，通常被分割为4个“8位二进制数”,写成10进制的形式就是我们常见的 174.136.14.108。我们通过IP地址来标识所连接的主机。<br>
+端口号是一个范围在0-65535之间的数字，一台主机上可能同时有多个sockets，因此需要端口号进行标识。端口号0-1023 是保留给操作系统使用的，我们可以使用剩下的端口号。<br>
+超文本传输协议（HTTP）描述了一种程序之间交换数据的方法，它非常简单易用，在一个socket连接上，客户端首先发送请求说明它需要什么，然后服务器发送响应，并在响应中包含客户端的数据。响应数据也许是从本地磁盘上复制来的，也许是程序动态生成的。<br>
+
+
+[原文link](http://www.aosabook.org/en/500L/a-simple-web-server.html)
+
+### new import:<br>
+`BaseHTTPServer`:<br>基本的 HTTP 服务器, 这个模块定义了两个实现 HTTP 服务器 (Web 服务器)的类。 通常地， 这个模块不被直接使用，但被用来作为构建功能性 Web 服务器的一个基类<br>
+第一个类， HTTPServer， 是 SocketServer.TCPServer 的一个子类。它创建并监听HTTP socket， 发送请求到一个处理程序。<br>
+第二个类， BaseHTTPRequestHandler(request, client_address, server)<br>
+这个类被用来处理到达服务器的 HTTP 请求。单独地，它不能响应任意实际的 HTTP 请求，必须是子类来处理每个请求方法 (例如， GET 或 POST)。BaseHTTPRequestHandler provides a number of class and instance variables, and methods for use by subclasses.<br>
+
+### keyword & fct:<br>
+`send_response(code)`<br>
+`send_header(keyword, value)`<br>
+`end_headers()`<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
