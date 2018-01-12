@@ -319,17 +319,55 @@ s.recv(1024)
 ```
 接受对方发来的数据，该方法会**阻塞线程**，所以需要一个专门的线程来接受数据<br>
 
+14.使用socket编写聊天工具
+--
+
+实现客户端-服务器-客户端的通信过程，即有两个客户端，这两个客户端可以通过连接服务器进行交互
+
+### keyword & fct:<br>
+`setDaemon(bool)`:<br>
+将线程声明为守护线程，必须在start()方法调用之前设置，如果不设置为守护线程程序会被无限挂起。这个方法基本和join是相反的。当我们在程序运行中，执行一个主线程，如果方线程又创建一个子线程，主线程和子线程就会分兵两路，分别运行，那么当主线程完成想退出时，会检验子线程是否完成。如果子线程未完成，则主线程会等待子线程完成后再退出。但是有时候我们需要的是只要主线程完成了，不管子线程是否完成，都要和主线程一起退出，这时就可以用setDaemon方法了<br>
+`finally`:<br>
+不管异常发生与否，finally下的语句都会执行
 
 
+### others:<br>
+创建一个类：<br>
+```python
+classs ClassName(BaseClass):
+   def __init__(self):
+   ...
+```
+* BaseClass是需要继承的基类，如果不需要继承则不用写括号<br>
+* __init__()是构造函数，创建类的实例时会调用<br>
+* 类的方法的第一个参数一定是self，代表类的实例，**self不是python的关键字**<br>
+* 基类的构造函数不会在派生类中自动调用<br>
+
+15.2048
+--
 
 
+### new import:<br>
 
 
+`curses`:<br>Terminal handling for character-cell displays<br>
+可以用来设置光标的位置和终端屏幕上显示的字符样式。<br>
+curses是linux库，官方的是不支持windows的，python会自带curses但是不能直接用，需要搞一个[unoffical](https://www.lfd.uci.edu/~gohlke/pythonlibs/#curses)的库，在里面找到和自己python对应版本的库下下来用pip安装后才可以用,文件名里面的cp27对应python2.7，cp36对应python3.6<br>
+python curses库的[manual](https://docs.python.org/2.7/library/curses.html)<br>
 
 
+### keyword & fct:<br>
 
-
-
+`curses.initscr()`:<br>
+Initialize the library. Return a WindowObject which represents the whole screen.<br>
+`window.addstr(str)`:<br>
+Paint the string str at (y, x) with attributes attr, overwriting anything previously on the display.<br>
+`window.refresh()`:<br>
+Update the display immediately (sync actual screen with previous drawing/deleting methods).<br>
+`window.nodelay(yes)`:<br>
+If yes is 1, getch() will be non-blocking.<br>
+`window.noecho()`:<br>关闭回显
+`curses.cbreak()`:<br>应用程序一般是立即响应的，即不需要按回车就立即回应的，这种模式叫cbreak模式，相反的常用的模式是缓冲输入模式<br>
 
 
 
