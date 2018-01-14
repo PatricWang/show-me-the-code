@@ -1,66 +1,171 @@
+# coding:utf-8
 import random
+import copy
+import curses
+
+mat = []
+valid_usr_input = ('a', 'w', 's', 'd', 'r', 'q')
+usr_cmd = ''
+score = 0
 
 
-mat = [[0 for row in range(4)] for col in range(4)]
-valid_usr_input = ('a', 'A', 'w', 'W', 's', 'S', 'd', 'D', 'r', 'q')
-# print mat
-
-# for i in range(4):
-# print'{0:^6} {1:^6} {2:^6} {3:^6}'.format([mat[0][i] for i in range(4)])
-
-# str(mat[0][i]).center(6)
+def reset_mat():
+    global mat
+    mat = [[0 for row in range(4)] for col in range(4)]
 
 
 def print_mat():
-
     for i in range(4):
         print'{0:^6} {1:^6} {2:^6} {3:^6}'.format(mat[i][0], mat[i][1], mat[i][2], mat[i][3])
 
 
 def new_num():
     while True:
+        if not contain_zero():
+            return False
         pos = random.randint(0, 15)
         i = pos / 4
         j = pos % 4
-        if not mat[0][j]:
-            mat[0][j] = random.choice([2, 4])
-            break
-    print 'pos: ', pos, 'i: ', i, 'j: ', j
+        if not mat[i][j]:
+            mat[i][j] = random.choice([2, 4])
+            return True
 
 
 def receive_input():
+    global usr_cmd,score
     while True:
-        usr_move_to = raw_input("move to:")
-        if usr_move_to in valid_usr_input:
+        usr_cmd = raw_input("score:{}, ".format(score) + "pls input cmd:").lower()
+        if usr_cmd in valid_usr_input:
             break
         else:
             print 'need a valid input:'
-            move_left()
-            new_num()
-            print_mat()
+
+
+def contain_zero():
+    for row in mat:
+        if 0 in row:
+            return True
+    return False
 
 
 def move_left():
-    tmp = [0,0,0,0]
-    k = 0
-    for j in range(4):
-        if mat[0][j]:
-            tmp[k] = mat[0][j]
-            k += 1
-    j = 0
-    while j < len(tmp) - 1:  # [::-1]:
-        if tmp[j] == tmp[j+1]:
-            tmp[j] += tmp[j+1]
-            if j+2 < len(tmp):
-                tmp[j+1:-1] = tmp[j+2:]
-            # tmp[-1] = 0
-        j += 1
-    mat[0] = tmp[::]
+    for i in range(4):
+        tmp = [num for num in mat[i] if num != 0]
+        tmp += [0 for k in range(4 - len(tmp))]
+        merge_num(tmp)
+        mat[i] = tmp[::]
 
+
+def merge_num(tmp):
+    j = 0
+    global score
+    while j < len(tmp) - 1:  # [::-1]:
+        if tmp[j] == tmp[j + 1]:
+            tmp[j] += tmp[j + 1]
+            score += tmp[j]
+            tmp[j + 1] = 0
+            if j + 2 < len(tmp):
+                tmp[j + 1:-1] = tmp[j + 2:]
+                tmp[-1] = 0
+        j += 1
+
+
+def move_up():
+    for j in range(4):
+        tmp = [0, 0, 0, 0]
+        k = 0
+        for row in mat:
+            if row[j]:
+                tmp[k] = row[j]
+                k = k+1
+        merge_num(tmp)
+        k = 0
+        for row in mat:
+            row[j] = tmp[k]
+            k += 1
+
+
+def move_down():
+    for j in range(4):
+        tmp = [0, 0, 0, 0]
+        k = 0
+        for row in mat[::-1]:
+            if row[j]:
+                tmp[k] = row[j]
+                k = k+1
+        merge_num(tmp)
+        k = 0
+        tmp.reverse()
+        for row in mat:
+            row[j] = tmp[k]
+            k += 1
+
+
+def move_right():
+    for i in range(4):
+        tmp = [num for num in mat[i][::-1] if num != 0]
+        tmp += [0 for k in range(len(mat[i]) - len(tmp))]
+        merge_num(tmp)
+        mat[i] = tmp[::-1]
+
+
+def exit_game():
+    print 'exit'
+    exit()
+
+
+def main():
+    usr_cmd_dic = {
+        'w':move_up,
+        'a':move_left,
+        's':move_down,
+        'd':move_right,
+        'r':reset_mat,
+        'q':exit_game
+    }
+    reset_mat()
+    game_continue = True
+    new_num()
+    while game_continue:
+        print_mat()
+        receive_input()
+        tmp_mat = copy.deepcopy(mat)    # tmp_mat = mat的话等于tmp_mat是mat的引用，tmp_mat会跟着mat变
+        usr_cmd_dic[usr_cmd]()
+        if tmp_mat == mat and contain_zero():
+            print 'same'
+            continue
+        game_continue = new_num()
+
+    print 'over, sorce= %d' % score
+
+
+def draw(screen):
+    screen.addstr('qqqqqqq\n')
+    screen.addstr('------ ------ ------ ------')
+    '|{: ^5'
+    screen.getch()
+
+
+curses.wrapper(draw)
+# main()
 
 # new_num()
-mat[0] = [2,4,2,2] # 16 4 2 4
-print_mat()
-receive_input()
+# reset_mat()
+# tmpm = mat[:]
+# mat[0][0] = 2
+# mat[1] = [3,3,3,3]
+# #tmpm[0]=[1,1,1,1]
+# print mat
+# print tmpm
+# mat[0] = [2,4,2,2] # 16 4 2 4
+# print_mat()
+# move_up()
+# print '\n'*2
+# print_mat()
+# receive_input()
 # new_num()
 # print_mat()
+
+# tmp = [2,2,1,3]
+# merge_num(tmp)
+# print tmp
