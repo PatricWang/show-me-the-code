@@ -141,11 +141,17 @@ def main():
 
 def draw(screen):
     screen.addstr('qqqqqqq\n')
-    screen.addstr('------ ------ ------ ------')
-    '|{: ^5'
+    screen.addstr('------ ------ ------ ------\n')
+    def print_row(row):
+        screen.addstr(''.join('|{: ^5}'.format(num) if num > 0 else '|     'for num in row) + '|\n')
+
+    for row in mat:
+        print_row(row)
+        screen.addstr('------ ------ ------ ------\n')
     screen.getch()
 
-
+reset_mat()
+new_num()
 curses.wrapper(draw)
 # main()
 
