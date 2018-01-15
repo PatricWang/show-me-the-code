@@ -353,8 +353,13 @@ classs ClassName(BaseClass):
 `curses`:<br>Terminal handling for character-cell displays<br>
 可以用来设置光标的位置和终端屏幕上显示的字符样式。<br>
 curses是linux库，官方的是不支持windows的，python会自带curses但是不能直接用，需要搞一个[unoffical](https://www.lfd.uci.edu/~gohlke/pythonlibs/#curses)的库，在里面找到和自己python对应版本的库下下来用pip安装后才可以用,文件名里面的cp27对应python2.7，cp36对应python3.6<br>
+
+
 python curses库的[manual](https://docs.python.org/2.7/library/curses.html)<br>
 
+
+`copy`:<br>
+[copy和deepcopy的区别](http://blog.csdn.net/qq_32907349/article/details/52190796)
 
 ### keyword & fct:<br>
 
@@ -368,7 +373,8 @@ Update the display immediately (sync actual screen with previous drawing/deletin
 If yes is 1, getch() will be non-blocking.<br>
 `window.noecho()`:<br>关闭回显
 `curses.cbreak()`:<br>应用程序一般是立即响应的，即不需要按回车就立即回应的，这种模式叫cbreak模式，相反的常用的模式是缓冲输入模式<br>
-
+`curses.wrapper(fun)`:<br>
+Initialize curses and call another callable object, func, which should be the rest of your curses-using application. If the application raises an exception, this function will restore the terminal to a sane state before re-raising the exception and generating a traceback. The callable object func is then passed the main window ‘stdscr’ as its first argument, followed by any other arguments passed to wrapper(). Before calling func, wrapper() turns on cbreak mode, turns off echo, enables the terminal keypad, and initializes colors if the terminal has color support. On exit (whether normally or by exception) it restores cooked mode, turns on echo, and disables the terminal keypad.
 
 
 
