@@ -377,12 +377,97 @@ If yes is 1, getch() will be non-blocking.<br>
 Initialize curses and call another callable object, func, which should be the rest of your curses-using application. If the application raises an exception, this function will restore the terminal to a sane state before re-raising the exception and generating a traceback. The callable object func is then passed the main window ‘stdscr’ as its first argument, followed by any other arguments passed to wrapper(). Before calling func, wrapper() turns on cbreak mode, turns off echo, enables the terminal keypad, and initializes colors if the terminal has color support. On exit (whether normally or by exception) it restores cooked mode, turns on echo, and disables the terminal keypad.
 
 
+multithread
+--
 
+#### 使用多线程的两种方法
+1. 直接用threading.Thread创建线程，target指向要执行的函数，args指向函数的参数列表
+```python
+t1 = threading.Thread(target=run,args=(1,))
+t1.start()
+```
 
+2. 继承threading.Thread类，重写run方法
+```python
+class MyThread(threading.Thread):
+    def __init__(self,num):
+        threading.Thread.__init__(self)
+        self.num = num
 
+    def run(self):
+        print 'number:%s' % self.num
+        time.sleep(2)
+```
 
+### keyword & fct:<br>
+`join()`:<br>阻塞主线程直到子线程执行结束
+`setDaemon(True)`:<br>设置为守护线程，在主线程结束时守护进程也会一同结束，不论有没有执行完<br>
+`threading.Lock()`:<br>互斥锁，防止多个线程同时访问同一个变量，非递归，同一个线程中只能acquire一次，acquire多次会死锁<br>
+`threading.RLock()`:<br>可递归，同一个线程中可多次acquire<br>
+`threading.Semaphore()`:<br>是一个变量，控制着对公共资源或者临界区的访问。信号量维护着一个计数器，指定可同时访问资源或者进入临界区的线程数。 
+每次有一个线程获得信号量时，计数器-1。若计数器为0，其他线程就停止访问信号量，直到另一个线程释放信号量。 <br>
+`threading.BoundedSemaphore()`:<br> 会检查内部计数器的值，并保证它不会大于初始值，如果超了，就引发一个 ValueError<br>
+```python
+def foo():
+    time.sleep(2)   #程序休息2秒
+    print("ok",time.ctime())
 
+for i in range(20):
+    t1=threading.Thread(target=foo,args=()) #实例化一个线程
+    t1.start()  #启动线程
+```
+程序会在很短的时间内生成20个线程来打印一句话。<br>
+如果在主机执行IO密集型任务的时候再执行这种类型的程序时，计算机就有很大可能会宕机。<br>
+**[计算密集型&IO密集型](http://blog.csdn.net/zyy1178625607/article/details/61200263)**
+`threading.Event()`:<br>用于主线程控制其他线程的执行，事件处理的机制：全局定义了一个"Flag"，如果"Flag"值为False，那么当程序执行event.wait方法时就会阻塞，如果"Flag"值为True，那么event.wait方法时便不再阻塞。<br>
+事件主要提供了三个方法 set、wait、clear:<br>
+`clear()`:将"Flag"设置为False<br>
+`set()`:将"Flag"设置为True<br>
+`wait()`:用在子线程中，调用时根据Flag的值来决定是否阻塞线程
+```python
+def do(event):
+    print 'start'
+    event.wait()
+    print 'execute'
 
+event_obj = threading.Event()
+
+def test_event():
+    for i in range(5):
+        t = threading.Thread(target=do, args=(event_obj,))
+        t.start()
+    event_obj.clear()
+    inpt = raw_input('input:')
+    if inpt == '1':
+        event_obj.set()
+```
+
+####生产者消费者模型<br>
+生产者消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。生产者和消费者彼此之间不直接通讯，而通过阻塞队列来进行通讯，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列里取，阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力。<br>
+
+```python
+q = Queue.Queue(maxsize=10)
+def producer():
+    count = 1
+    while True:
+        q.put('product %s' % count)
+        print 'has product', count
+        count += 1
+        time.sleep(0.1)
+
+def consumer(n):
+    while True:
+        print '%s consume %s' % (n,q.get())
+        time.sleep(0.5)
+
+def test_product_consumer():
+    p = threading.Thread(target=producer,)
+    c1 = threading.Thread(target=consumer,args=('tom',))
+    c2 = threading.Thread(target=consumer,args=('jack',))
+    p.start()
+    c1.start()
+    c2.start()
+```    
 
 
 
