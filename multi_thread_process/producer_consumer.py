@@ -13,7 +13,7 @@ class Producer(threading.Thread):
             print '%s:%s produced %d ' % (time.ctime(), self.getName(), num)
             self.data.put(num)
             time.sleep(1)
-            print '%s:%s completed ' % (time.ctime(), self.getName())
+            print '%s:%s completed produced %d num' % (time.ctime(), self.getName(), i)
 
 
 class Consumer_even(threading.Thread):
@@ -31,7 +31,9 @@ class Consumer_even(threading.Thread):
                 else:
                     self.data.put(val_even)
                     time.sleep(2)
-            except:break
+            except:
+                print self.getName(),'no element in queue'
+                break
 
 
 class Consumer_odd(threading.Thread):
@@ -49,14 +51,23 @@ class Consumer_odd(threading.Thread):
                 else:
                     self.data.put(val_odd)
                     time.sleep(2)
-            except:break
+            except:
+                print self.getName(), 'no element in queue'
+                break
+
 
 def main():
-    queue = Queue()
+    queue = Queue.Queue()
     producer = Producer('producer', queue)
     consumer_even = Consumer_even('consumer_even', queue)
     consumer_odd = Consumer_odd('consumer_odd', queue)
     producer.start()
-    
+    consumer_even.start()
+    consumer_odd.start()
+    producer.join()
+    consumer_odd.join()
+    consumer_even.join()
+    print 'all thread stop'
 
 
+main()

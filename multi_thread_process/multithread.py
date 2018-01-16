@@ -1,4 +1,4 @@
-import threading
+import threading, threadpool
 import time
 import Queue
 
@@ -165,6 +165,20 @@ def test_product_consumer():
     c1.start()
     c2.start()
 
+def foo_pool(str):
+    print 'foopool', str
+    return 0
+
+def print_ret(request, result):
+    print ' printret, request: %s, result: %s\n' % (request.requestID, result)
+
+def test_pool():
+    data = [1,2,3,4,5,6]
+    pool = threadpool.ThreadPool(2)
+    reqs = threadpool.makeRequests(foo_pool,data, print_ret)
+    [pool.putRequest(req) for req in reqs]
+    pool.wait()
+
 #create_thread()
 #test_mythread()
 # test_join_setDaemon()
@@ -173,4 +187,4 @@ def test_product_consumer():
 # test_semapahore()
 # test_event()
 # test_queue()
-test_product_consumer()
+test_pool()
