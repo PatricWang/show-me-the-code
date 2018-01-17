@@ -19,17 +19,6 @@ def foo_pipe(conn):
     print 'child:', conn.recv()
     conn.close()
 
-4999999950000000
-49999995000000
-4942148467503573
-4942228849065910
-4999999950000000
-5000000050000000
-50000005000000
-50000005000000
-5000000050000000
-5000000050000000
-5000000050000000
 def test_pipe():
     parent_conn, child_conn = Pipe()
     p = Process(target=foo_pipe, args=(child_conn,))

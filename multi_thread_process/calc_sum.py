@@ -1,5 +1,6 @@
 import threadpool,threading
 import time
+from multiprocessing import Process, Pool
 # calculate sum from 1 to 10**10
 
 
@@ -54,7 +55,7 @@ def sum_pool(start, end):
         sum += i
     return sum
 
-def onresult(req,sum):
+def onresult(sum):
     global ret
     ret += sum
 
@@ -67,17 +68,35 @@ def with_pool():
     [pool.putRequest(req) for req in reqs]
     pool.wait()
 
+def process_calc_sum(start, end):
+    result = 0
+    for i in xrange(start, end+1):
+        result += i
+    return result
+
+def with_process():
+    arglist = []
+    for i in range(10):
+        arglist.append(([i * 10 ** 7 + 1, 10 ** 7 * (i + 1)], None))
+    pool = Pool(10)
+    for i in range(10):
+        pool.apply_async(func=process_calc_sum, args=(i * 10 ** 7 + 1, 10 ** 7 * (i + 1)), callback=onresult)
+    pool.close()
+    pool.join()
+
 
 def main():
     time_start = time.time()
-    no_multithread()
+    # no_multithread()
     # with_multithread()
     # with_multithread_subsum()
     # with_pool()
+    with_process()
     # for i in range(10):
     #     calc_sub_sum(i)
     # ret = sum(sub_sum)
     print ret
     print "main time elapse:", time.time() - time_start
 
-main()
+if __name__ == '__main__':
+    main()
