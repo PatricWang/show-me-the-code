@@ -48,7 +48,7 @@ a+：从文件结尾处读写，如果不存在则创建新文件<br>
 `readline()`:读一行,<br>
 `readlines()`:读所有内容，生成一个行的列表(list)，可以用for...in处理<br>
 `numpy.sum()`:返回类型为`numpy.ndarray`<br>
-<span id = "jump"></span>
+<span id = "jump">生生世世损伤</span>
 `sorted()`:<br>
 **sort 与 sorted 区别:<br>**
 sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。<br>
