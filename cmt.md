@@ -536,13 +536,37 @@ Manager支持的类型有list,dict,Namespace,Lock,RLock,Semaphore,BoundedSemapho
 `apply_async(self, func, args=(), kwds={}, callback=None)`：<br>非阻塞型进程池 <br>
 
 
+查询12306车票信息
+---
 
+### new import:<br>
+`docopt`:<br>
+命令行参数解析工具   [manual](http://docopt.org/)<br>
+在代码的最开头使用 """ """文档注释的形式写出符合要求的文档，就会自动生成对应的字典<br>
+`re`:<br>正则表达式<br>
+`pprint`:<br>美观地打印打印 Python 数据结构<br>   [manual](https://docs.python.org/3/library/pprint.html)
+`colorama`
+`prettytable`
 
+### keyword & fct:<br>
+`__doc__`:<br>每个对象都会有一个__doc__属性，函数语句中，如果第一个表达式是一个string，这个函数的__doc__就是这个string，否则__doc__是None
 
+#### 将list里面的unicode显示为中文
+```python
+stations = re.findall(u'([\u4e00-\u9fa5]+)\|([A-Z]+)', response.text)
+stations = str(stations).replace('u\'','\'')
+stations = stations.decode("unicode-escape")
+```
+`decode("unicode-escape")`:<br>
+```python
+str1 = '\u4f60\u597d'  
+print str1.decode('unicode_escape')  
+你好
+```
+字符串内容是unicode码，decode('unicode_escape')后将其转为对应的字符
 
-
-
-
+对字典排序
+pytohn编码 utf8 gbk
 
 
 
