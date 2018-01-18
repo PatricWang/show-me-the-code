@@ -52,6 +52,7 @@ a+：从文件结尾处读写，如果不存在则创建新文件<br>
 **sort 与 sorted 区别:<br>**
 sort 是应用在 list 上的方法，sorted 可以对所有可迭代的对象进行排序操作。<br>
 list 的 sort 方法返回的是对已经存在的列表进行操作，而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。<br>
+sort可接受一个函数做参数，通常是lambda函数，用来指定排序的方法<br>
 sorted(iterable, cmp=None, key=None, reverse=False)<br>
 1.cmp，比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0<br>
 2.key，主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序<br>
@@ -545,7 +546,7 @@ Manager支持的类型有list,dict,Namespace,Lock,RLock,Semaphore,BoundedSemapho
 在代码的最开头使用 """ """文档注释的形式写出符合要求的文档，就会自动生成对应的字典<br>
 `re`:<br>正则表达式<br>
 `pprint`:<br>美观地打印打印 Python 数据结构<br>   [manual](https://docs.python.org/3/library/pprint.html)
-`colorama`
+`colorama`:<br>用来在终端输出彩色文字
 `prettytable`
 
 ### keyword & fct:<br>
@@ -566,18 +567,26 @@ print str1.decode('unicode_escape')
 字符串内容是unicode码，decode('unicode_escape')后将其转为对应的字符
 
 
-pytohn编码 utf8 gbk
-
 #### 对字典排序
 使用[`sorted(iterable,key,reverse)`](#jump)<br>
 
+**字典值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组。**
+
+`dict.items()`:<br>python2中以列表返回可遍历的(键, 值) 元组数组，返回列表，每一组键值组成tuple作为一个列表元素，python3中不再返回列表<br>
 
 
+* 按key排序:<br>
+```python
+sorted(dict)
+```
+返回一个列表，里面只包含排好序的key
 
-
-
-
-
+* 按value排序:<br>
+```python
+value_dic = sorted(dic.items(), key=lambda x: x[1])
+```
+还是返回一个列个表，但是里面有键值，键值组成tuple并按值排序<br>
+如果想按key排序还可以把上面的x[1]改成x[0]
 
 
 
