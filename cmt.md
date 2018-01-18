@@ -565,8 +565,12 @@ print str1.decode('unicode_escape')
 ```
 字符串内容是unicode码，decode('unicode_escape')后将其转为对应的字符
 
-对字典排序
+
 pytohn编码 utf8 gbk
+
+#### 对字典排序
+使用`sorted(iterable,key,reverse)`:<br>
+
 
 
 
